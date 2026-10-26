@@ -15,26 +15,28 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME    = "transactions.db";
-    private static final int    DB_VERSION = 1;
+    private static final int    DB_VERSION = 2;
 
-    public static final String TABLE        = "transactions";
-    public static final String COL_ID       = "id";
-    public static final String COL_NAME     = "name";
-    public static final String COL_AMOUNT   = "amount";
-    public static final String COL_CATEGORY = "category";
-    public static final String COL_TIMESTAMP= "timestamp";
+    public static final String TABLE          = "transactions";
+    public static final String COL_ID         = "id";
+    public static final String COL_NAME       = "name";
+    public static final String COL_AMOUNT     = "amount";
+    public static final String COL_CATEGORY   = "category";
+    public static final String COL_TIMESTAMP  = "timestamp";
     public static final String COL_IS_FLAGGED = "is_flagged";
-    public static final String COL_FLAG_REASON = "flag_reason";
+    public static final String COL_FLAG_REASON= "flag_reason";
+    public static final String COL_RISK_SCORE = "risk_score";
 
     private static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE + " (" +
-                    COL_ID         + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COL_NAME       + " TEXT NOT NULL, "                     +
-                    COL_AMOUNT     + " REAL NOT NULL CHECK(amount > 0), "   +
-                    COL_CATEGORY   + " TEXT NOT NULL, "                     +
-                    COL_TIMESTAMP  + " INTEGER NOT NULL, "                  +
-                    COL_IS_FLAGGED + " INTEGER DEFAULT 0, "                 +
-                    COL_FLAG_REASON+ " TEXT DEFAULT '' "                    +
+                    COL_ID          + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COL_NAME        + " TEXT NOT NULL, "                     +
+                    COL_AMOUNT      + " REAL NOT NULL CHECK(amount > 0), "   +
+                    COL_CATEGORY    + " TEXT NOT NULL, "                     +
+                    COL_TIMESTAMP   + " INTEGER NOT NULL, "                  +
+                    COL_IS_FLAGGED  + " INTEGER DEFAULT 0, "                 +
+                    COL_FLAG_REASON + " TEXT DEFAULT '', "                   +
+                    COL_RISK_SCORE  + " INTEGER DEFAULT 0"                   +
                     ");";
 
     public DatabaseHelper(Context context) {
@@ -50,8 +52,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE);
-        onCreate(db);
+        if (oldVersion < 2) {
+            db.execSQL("ALTER TABLE " + TABLE + " ADD COLUMN " + COL_RISK_SCORE + " INTEGER DEFAULT 0;");
+        }
     }
 
     // ── Data governance: validate before every write ──────────────────────────
@@ -70,6 +73,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put(COL_TIMESTAMP,   tx.getTimestamp());
         cv.put(COL_IS_FLAGGED,  tx.isFlagged() ? 1 : 0);
         cv.put(COL_FLAG_REASON, tx.getFlagReason());
+        cv.put(COL_RISK_SCORE,  tx.getRiskScore());
 
         return getWritableDatabase().insert(TABLE, null, cv);
     }
@@ -151,6 +155,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         tx.setTimestamp(c.getLong(c.getColumnIndexOrThrow(COL_TIMESTAMP)));
         tx.setFlagged(c.getInt(c.getColumnIndexOrThrow(COL_IS_FLAGGED)) == 1);
         tx.setFlagReason(c.getString(c.getColumnIndexOrThrow(COL_FLAG_REASON)));
+        int riskIdx = c.getColumnIndex(COL_RISK_SCORE);
+        if (riskIdx != -1) {
+            tx.setRiskScore(c.getInt(riskIdx));
+        }
         return tx;
     }
 }

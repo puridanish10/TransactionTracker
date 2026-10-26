@@ -1,92 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@color/bg_primary"
-    android:padding="12dp"
-    android:layout_marginBottom="6dp">
+    android:layout_marginBottom="10dp"
+    app:cardBackgroundColor="@color/surface_card"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="1dp"
+    app:strokeColor="@color/border_light"
+    app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:orientation="vertical"
+        android:padding="14dp">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary" />
+            <!-- Category Icon Avatar -->
+            <FrameLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_circle_icon">
+
+                <ImageView
+                    android:id="@+id/iv_category_icon"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/empty_icon_desc"
+                    android:src="@drawable/ic_other"
+                    app:tint="@color/brand_blue" />
+
+            </FrameLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="2dp">
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_category"
+                <!-- Row 1: Description & Date -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <!-- Row 2: Category & Risk Tags -->
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
-                    android:textColor="@color/amex_blue"
-                    android:background="@color/badge_bg"
-                    android:paddingStart="6dp"
-                    android:paddingEnd="6dp"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp" />
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:textSize="11sp"
-                    android:textColor="@color/text_hint" />
+                    <TextView
+                        android:id="@+id/tv_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_tag_pill"
+                        android:backgroundTint="@color/badge_bg"
+                        android:paddingStart="8dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="3dp"
+                        android:textColor="@color/badge_text"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_risk_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_tag_pill"
+                        android:paddingStart="8dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="3dp"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/ok_text"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/btn_delete"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="6dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/delete_desc"
+                android:padding="6dp"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/text_muted" />
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_amount"
-            android:layout_width="wrap_content"
+        <!-- Flag / Anomaly Banner Callout -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_flag_banner"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/ok_text" />
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/flag_bg"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/flag_border"
+            app:strokeWidth="1dp">
 
-        <ImageView
-            android:id="@+id/btn_delete"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="8dp"
-            android:src="@android:drawable/ic_menu_delete"
-            android:contentDescription="Delete transaction"
-            android:tint="@color/text_hint"
-            android:padding="4dp"
-            android:background="?attr/selectableItemBackgroundBorderless" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@string/warning_icon_desc"
+                    android:src="@drawable/ic_warning"
+                    app:tint="@color/flag_text" />
+
+                <TextView
+                    android:id="@+id/tv_flag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/flag_text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_flag"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:textSize="12sp"
-        android:textColor="@color/flag_text"
-        android:padding="6dp"
-        android:visibility="gone" />
-
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

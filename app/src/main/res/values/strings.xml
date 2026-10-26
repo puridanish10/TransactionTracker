@@ -1,3 +1,59 @@
 <resources>
     <string name="app_name">TransactionTracker</string>
+    <string name="on_device_ai">🛡️ On-Device AI</string>
+    <string name="subtitle_tech">Offline SQLite pipeline • Category pattern analyzer</string>
+    <string name="label_total_spend">Total Spend</string>
+    <string name="label_entries">Entries</string>
+    <string name="label_anomalies">Anomalies</string>
+    <string name="title_new_transaction">New Transaction</string>
+    <string name="hint_description">Description (e.g. Flight ticket, Grocery)</string>
+    <string name="hint_amount">Amount</string>
+    <string name="btn_add_analyze">Add &amp; Analyze</string>
+    <string name="title_transactions">Transactions</string>
+    <string name="label_filter">Filter:</string>
+    <string name="empty_icon_desc">Empty state icon</string>
+    <string name="empty_title">No transactions found</string>
+    <string name="empty_desc">Add a transaction above or adjust your filter/search selection.</string>
+    <string name="warning_icon_desc">Warning icon</string>
+    <string name="delete_desc">Delete transaction</string>
+
+    <!-- Settings Dialog Strings -->
+    <string name="dialog_settings_title">Anomaly Threshold Settings</string>
+    <string name="dialog_settings_desc">Configure transaction amounts greater than which anomalies are flagged and saved as settings.</string>
+    <string name="hint_setting_global">Global High Value Threshold</string>
+    <string name="hint_setting_travel">Travel Category Threshold</string>
+    <string name="hint_setting_food">Food Category Threshold</string>
+    <string name="hint_setting_shopping">Shopping Category Threshold</string>
+    <string name="hint_setting_bills">Bills Category Threshold</string>
+    <string name="hint_setting_general">General / Other Category Threshold</string>
+    <string name="btn_save">Save Settings</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="msg_settings_saved">Anomaly threshold settings saved</string>
+    <string name="btn_settings">⚙️ Settings</string>
+
+    <!-- Recruiter Standout Feature Strings -->
+    <string name="btn_export_csv">📥 Export CSV</string>
+    <string name="btn_demo_data">⚡ Demo Data</string>
+    <string name="hint_search">Search description&#8230;</string>
+    <string name="chip_all">All</string>
+    <string name="chip_flagged">Flagged</string>
+    <string name="chip_high_risk">High Risk</string>
+    <string name="chip_food">Food</string>
+    <string name="chip_travel">Travel</string>
+    <string name="chip_shopping">Shopping</string>
+    <string name="chip_bills">Bills</string>
+    <string name="chip_other">Other</string>
+    <string name="msg_demo_loaded">Demo dataset loaded with realistic patterns &amp; anomalies!</string>
+    <string name="msg_csv_exported">Exporting audit CSV report&#8230;</string>
+
+    <!-- Analytics Graph Strings -->
+    <string name="title_category_analytics">Category Spend Breakdown</string>
+    <string name="subtitle_tap_category">Tap category to view entries</string>
+    <string name="graph_food">🍔 Food</string>
+    <string name="graph_travel">✈️ Travel</string>
+    <string name="graph_shopping">🛍️ Shop</string>
+    <string name="graph_bills">📄 Bills</string>
+    <string name="graph_other">📦 Other</string>
+    <string name="default_zero_entries">0 entries</string>
+    <string name="default_zero_pct">0%</string>
 </resources>

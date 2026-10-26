@@ -1,20 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="amex_blue">#006FCF</color>
-    <color name="amex_blue_dark">#0052A3</color>
+    <!-- Brand / Primary Colors -->
+    <color name="brand_primary">#0F172A</color>
+    <color name="brand_primary_variant">#1E293B</color>
+    <color name="brand_blue">#2563EB</color>
+    <color name="brand_blue_dark">#1D4ED8</color>
+    <color name="brand_blue_light">#EFF6FF</color>
 
-    <color name="bg_primary">#FFFFFF</color>
-    <color name="bg_secondary">#F5F7FA</color>
+    <!-- Backgrounds & Surfaces -->
+    <color name="bg_app">#F8FAFC</color>
+    <color name="surface_card">#FFFFFF</color>
+    <color name="border_light">#E2E8F0</color>
 
-    <color name="text_primary">#1A1A1A</color>
-    <color name="text_hint">#888888</color>
+    <!-- Typography -->
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#64748B</color>
+    <color name="text_muted">#94A3B8</color>
 
-    <color name="flag_bg">#FCEBEB</color>
-    <color name="flag_text">#A32D2D</color>
+    <!-- Status / Alerts -->
+    <color name="flag_bg">#FEF2F2</color>
+    <color name="flag_border">#FECACA</color>
+    <color name="flag_text">#DC2626</color>
 
-    <color name="ok_text">#27500A</color>
+    <color name="ok_bg">#F0FDF4</color>
+    <color name="ok_border">#BBF7D0</color>
+    <color name="ok_text">#16A34A</color>
 
-    <color name="badge_bg">#E6F1FB</color>
+    <color name="badge_bg">#F1F5F9</color>
+    <color name="badge_text">#334155</color>
+
+    <color name="risk_high">#DC2626</color>
+    <color name="risk_medium">#D97706</color>
+    <color name="risk_low">#16A34A</color>
+
+    <!-- Category Analytics Graph Colors -->
+    <color name="cat_food">#F97316</color>
+    <color name="cat_travel">#0284C7</color>
+    <color name="cat_shopping">#9333EA</color>
+    <color name="cat_bills">#059669</color>
+    <color name="cat_other">#64748B</color>
+
+    <!-- Backward compatibility aliases -->
+    <color name="amex_blue">#2563EB</color>
+    <color name="amex_blue_dark">#1D4ED8</color>
+    <color name="bg_primary">#F8FAFC</color>
+    <color name="bg_secondary">#FFFFFF</color>
+    <color name="text_hint">#94A3B8</color>
 
 </resources>
