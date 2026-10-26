@@ -1,4 +1,4 @@
-# 🛡️ TransactionTracker — On-Device AI Expense & Anomaly Engine
+# 🛡️ TransactionTracker 
 
 **TransactionTracker** is a modern Android application engineered with an **on-device statistical anomaly engine**, quantitative risk scoring pipeline, and category pattern analyzers. Designed with privacy-first architecture, all financial data processing, pattern evaluations, and risk scoring execute 100% locally on the device's CPU and SQLite storage without cloud dependencies.
 
